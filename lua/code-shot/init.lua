@@ -49,14 +49,24 @@ local shot = function()
 
 	core.job.spawn("silicon", args, {}, function()
 		if not err then
-			vim.notify("Code shot succeed, output to " .. output_path, vim.log.levels.INFO, {
-				title = "Code Shot",
-			})
+			if static.config.to_clipboard then
+				vim.notify("Code shot succeed, output to clipboard", vim.log.levels.INFO, {
+					title = "Code Shot",
+				})
+			else
+				vim.notify("Code shot succeed, output to " .. output_path, vim.log.levels.INFO, {
+					title = "Code Shot",
+				})
+			end
 		end
 		if use_temp_source then
 			vim.uv.fs_unlink(source_file)
 		end
 	end, function(_, data)
+		if string.sub(data, 1, 8) == "[warning]" then
+			vim.notify(data, vim.log.levels.WARN, { title = "Code Shot" })
+			return
+		end
 		err = true
 		vim.notify("Code shot failed, error is " .. data, vim.log.levels.ERROR, {
 			title = "Code Shot",
