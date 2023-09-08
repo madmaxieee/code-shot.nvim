@@ -1,4 +1,4 @@
-local core = require("core")
+local core = require("code-shot.core")
 
 local temp_file_path = function(source_file)
 	local dir = core.file.dir(source_file)

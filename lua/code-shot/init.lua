@@ -1,5 +1,5 @@
 local static = require("code-shot.static")
-local core = require("core")
+local core = require("code-shot.core")
 local utils = require("code-shot.utils")
 
 local shot = function()
