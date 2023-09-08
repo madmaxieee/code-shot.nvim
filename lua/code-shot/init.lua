@@ -30,13 +30,22 @@ local shot = function()
 
 	local output_path = static.config.output()
 
-	core.lua.list.each({
-		"--output",
-		output_path,
-		source_file,
-	}, function(option)
-		table.insert(args, option)
-	end)
+	if static.config.to_clipboard then
+		core.lua.list.each({
+			"--to-clipboard",
+			source_file,
+		}, function(option)
+			table.insert(args, option)
+		end)
+	else
+		core.lua.list.each({
+			"--output",
+			output_path,
+			source_file,
+		}, function(option)
+			table.insert(args, option)
+		end)
+	end
 
 	core.job.spawn("silicon", args, {}, function()
 		if not err then

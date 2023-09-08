@@ -1,4 +1,5 @@
 local config = {
+	to_clipboard = false,
 	output = function()
 		local core = require("code-shot.core")
 		local buf_name = vim.api.nvim_buf_get_name(0)
