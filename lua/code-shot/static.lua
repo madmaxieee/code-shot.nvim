@@ -1,9 +1,8 @@
 local config = {
 	to_clipboard = false,
 	output = function()
-		local core = require("code-shot.core")
 		local buf_name = vim.api.nvim_buf_get_name(0)
-		return core.file.name(buf_name) .. ".png"
+		return string.match(buf_name, "([^/^%.]+)[^/]*$") .. ".png"
 	end,
 	options = function(select_area)
 		if not select_area then
