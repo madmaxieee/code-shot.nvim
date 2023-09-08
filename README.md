@@ -7,11 +7,10 @@ Similar features to [silicon.nvim](https://github.com/krivahtoo/silicon.nvim), k
 ## Dependencies
 
 - [silicon](https://github.com/Aloxaf/silicon)
-- [niuiic/core.nvim](https://github.com/niuiic/core.nvim)
 
 ## Usage
 
-Just call `require("code-shot").shot()`, work in both `n` and `v` mode.
+Just call `require("code-shot").shot()`, work in both `n` and `v` mode. You can also use `:CodeShot` command.
 
 - Shot whole file
 
@@ -27,6 +26,7 @@ Default config here.
 
 ```lua
 require("code-shot").setup({
+	to_clipboard = false,
 	---@return string output file path
 	output = function()
 		local code-shot.core = require("core")
