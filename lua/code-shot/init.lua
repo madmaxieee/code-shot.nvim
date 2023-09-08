@@ -66,6 +66,9 @@ end
 
 local setup = function(new_config)
 	static.config = vim.tbl_deep_extend("force", static.config, new_config or {})
+	vim.api.nvim_create_user_command("CodeShot", function()
+		shot()
+	end, {})
 end
 
 return {
