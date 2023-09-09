@@ -63,7 +63,7 @@ local shot = function()
 			vim.uv.fs_unlink(source_file)
 		end
 	end, function(_, data)
-		if string.sub(data, 1, 8) == "[warning]" then
+		if string.sub(data, 1, 9) == "[warning]" then
 			vim.notify(data, vim.log.levels.WARN, { title = "Code Shot" })
 			return
 		end
